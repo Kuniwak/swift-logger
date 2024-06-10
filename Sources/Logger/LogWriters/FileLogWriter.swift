@@ -16,7 +16,13 @@ public class FileLogWriter: LogWriterProtocol {
         guard let data = "\(severity.description): \(message)\n".data(using: encoding) else {
             return
         }
-        try? fileHandle.write(contentsOf: data)
-        try? fileHandle.synchronize()
+        
+        if #available(iOS 13.4, tvOS 13.4, watchOS 6.2, *) {
+            try? fileHandle.write(contentsOf: data)
+            try? fileHandle.synchronize()
+        } else {
+            fileHandle.write(data)
+            fileHandle.synchronizeFile()
+        }
     }
 }
