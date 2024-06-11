@@ -36,4 +36,5 @@ jobs:
 
       - name: Run tests
         run: |
-          make test
+          # XXX: visionOS is not installed on macos-latest...
+          make test-macOS test-iOS test-watchOS test-tvOS
