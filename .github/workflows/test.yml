@@ -13,6 +13,16 @@ jobs:
       contents: read
       checks: write
 
+    strategy:
+      matrix:
+        os:
+          - macOS
+          - iOS
+          - watchOS
+          - tvOS
+          # XXX: visionOS is not installed on macos-latest...
+          # - visionOS
+
     steps:
       - name: Checkout
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
@@ -36,5 +46,4 @@ jobs:
 
       - name: Run tests
         run: |
-          # XXX: visionOS is not installed on macos-latest...
-          make test-macOS test-iOS test-watchOS test-tvOS
+          make "test-${{ matrix.os }}"
