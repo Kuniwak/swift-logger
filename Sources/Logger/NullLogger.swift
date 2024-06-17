@@ -1,4 +1,7 @@
 public struct NullLogger: LoggerProtocol {
+    public init() {}
+    
+    
     public func trace(_ s: String = #function) {
         // Do nothing
     }
