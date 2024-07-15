@@ -1,7 +1,7 @@
 import Foundation
 
 
-public class FileLogWriter: LogWriterProtocol {
+public final class FileLogWriter: LogWriterProtocol {
     private let fileHandle: FileHandle
     private let encoding: String.Encoding
     

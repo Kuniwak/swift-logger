@@ -7,9 +7,9 @@ let package = Package(
     name: "swift-logger",
     platforms: [
         .macOS(.v11),
-        .iOS(.v12),
-        .tvOS(.v12),
-        .watchOS(.v4),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6),
         .visionOS(.v1),
     ],
     products: [

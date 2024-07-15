@@ -1,4 +1,4 @@
-public class SpyLogWriter: LogWriterProtocol {
+public final class SpyLogWriter: LogWriterProtocol {
     public private(set) var capturedLogs: [CapturedLogEntry] = []
     
     public init() {}

@@ -1,5 +1,5 @@
 /// A logger that logs to multiple loggers at once.
-public class CompositeLogWriter: LogWriterProtocol {
+public final class CompositeLogWriter: LogWriterProtocol {
     private let writers: [any LogWriterProtocol]
     
     

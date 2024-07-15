@@ -1,5 +1,5 @@
 /// Log severity levels.
-public enum LogSeverity: RawRepresentable, Codable, CaseIterable {
+public enum LogSeverity: RawRepresentable, Codable, CaseIterable, Sendable {
     public typealias RawValue = String
     
     case debug

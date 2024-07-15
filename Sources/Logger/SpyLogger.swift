@@ -1,37 +1,55 @@
-public class SpyLogger: LoggerProtocol {
-    public private(set) var entries = [CapturedLogEntry]()
+public final actor SpyLogger: LoggerProtocol {
+    nonisolated public let entries = CapturedEntries()
     
     
     public init() {}
     
     
-    public func trace(_ s: String = #function) {
+    nonisolated public func trace(_ s: String = #function) {
         debug(s)
     }
     
-    public func debug(_ message: String) {
+    nonisolated public func debug(_ message: String) {
         entries.append(.init(severity: .debug, message: message))
     }
     
-    public func info(_ message: String) {
+    nonisolated public func info(_ message: String) {
         entries.append(.init(severity: .info, message: message))
     }
     
-    public func notice(_ message: String) {
+    nonisolated public func notice(_ message: String) {
         entries.append(.init(severity: .notice, message: message))
     }
     
-    public func error(_ message: String) {
+    nonisolated public func error(_ message: String) {
         entries.append(.init(severity: .error, message: message))
     }
     
-    public func fault(_ message: String) {
+    nonisolated public func fault(_ message: String) {
         entries.append(.init(severity: .fault, message: message))
     }
 }
 
 
-public struct CapturedLogEntry: Equatable, Codable {
+public final class CapturedEntries {
+    private var entries = [CapturedLogEntry]()
+    
+    
+    public init() {}
+    
+    
+    public subscript(index: Int) -> CapturedLogEntry {
+        return entries[index]
+    }
+    
+    
+    fileprivate func append(_ entry: CapturedLogEntry) {
+        entries.append(entry)
+    }
+}
+
+
+public struct CapturedLogEntry: Equatable, Codable, Sendable {
     public let severity: LogSeverity
     public let message: String
     
