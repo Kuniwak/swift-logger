@@ -6,13 +6,13 @@ XCODEBUILD_SCRIPTS_PATH := ${SCRIPTS_PATH}/xcodebuild-scripts
 all: clean test
 
 Logs:
-	mkdir Logs
+	mkdir -p Logs
 
 build:
-	mkdir build
+	mkdir -p build
 
 build/reports: build
-	mkdir build/reports
+	mkdir -p build/reports
 
 .PHONY: test
 test: test-macOS test-iOS test-watchOS test-tvOS test-visionOS

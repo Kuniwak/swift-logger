@@ -3,7 +3,7 @@ import Foundation
 
 
 /// iOS 12.x compatible log writer for Apple's OSLog
-public class OSLogWriter: LogWriterProtocol {
+public final class OSLogWriter: LogWriterProtocol, Sendable {
     private let osLog: OSLog
     
     
